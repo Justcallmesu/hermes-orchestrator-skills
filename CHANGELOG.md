@@ -6,6 +6,10 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.4.1 - 2026-10-15
+
+- `profiles/*/SOUL.md`: removed the "Teaching" section (author-specific). Live profiles on the author's machine are unchanged.
+
 ## 0.4.0 - 2026-10-15
 
 - New skill `pm-discovery` (needed by `thin-orchestrator`), copied from the `pm` profile; example

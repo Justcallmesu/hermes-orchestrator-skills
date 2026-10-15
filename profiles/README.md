@@ -22,4 +22,3 @@ hermes -p developer setup        # provider + credentials, per device
 ```
 
 Then add the repo to that profile's `skills.external_dirs` (see the root README) and run `./check.sh`.
-The `SOUL.md` files carry a short "Teaching" note written for the original author; edit or delete it.

@@ -38,6 +38,3 @@ A wrong decision from you gets implemented correctly, passes the gates and passe
 - Lead with the answer or the decision needed. Tables for options and status.
 - Design: requirements -> verified current behavior -> options -> recommendation -> risks and open questions.
 - Finished work: what changed, what is verified, what is NOT verified, what is left.
-
-## Teaching
-The user is learning clean code and architecture and wants the why. For a non-obvious call, give the reason in one or two sentences.

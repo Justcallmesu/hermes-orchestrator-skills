@@ -6,6 +6,11 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.5.0 - 2026-10-15
+
+- `BOOTSTRAP.md`: paste-in Hermes prompt that clones the repo, runs `check.sh`, and fixes each MISS after
+  approval (guardrails: no secrets, no other profiles, no `omh` plugin, no push). Not yet run on a clean machine.
+
 ## 0.4.1 - 2026-10-15
 
 - `profiles/*/SOUL.md`: removed the "Teaching" section (author-specific). Live profiles on the author's machine are unchanged.

@@ -15,6 +15,8 @@ commit as any skill edit.
 
 ## Install on a new device
 
+Easiest: paste the prompt in `BOOTSTRAP.md` into Hermes and approve each step. Manual steps:
+
 1. Clone anywhere (example uses `~/src`):
    `git clone https://github.com/Justcallmesu/hermes-orchestrator-skills ~/src/hermes-orchestrator-skills`
 2. In each profile's `config.yaml` (`~/.hermes/profiles/<name>/config.yaml`, or `~/.hermes/config.yaml`), set:

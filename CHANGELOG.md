@@ -6,6 +6,14 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.4.0 - 2026-10-15
+
+- New skill `pm-discovery` (needed by `thin-orchestrator`), copied from the `pm` profile; example
+  paths and the "Logistic"/"v9 §8" references generalised.
+- New `profiles/`: `SOUL.md` + `profile.yaml` for `pm`, `developer`, `reviewer` (no config, credentials
+  or memories). `pm` description no longer names a project.
+- `check.sh`: `pm-discovery` is no longer an external dependency.
+
 ## 0.3.0 - 2026-10-15
 
 - Repo (no skill content changed): README rewritten with install steps for a new device

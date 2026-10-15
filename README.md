@@ -6,11 +6,11 @@ commit as any skill edit.
 
 ## Layout
 
-`orchestrator/<skill>/SKILL.md`, 13 skills:
+`orchestrator/<skill>/SKILL.md`, 14 skills, plus `profiles/` (see `profiles/README.md`):
 
 | Skills | Origin |
 |---|---|
-| `thin-orchestrator`, `orchestration-run-hygiene`, `coding-agent-delegation` | Own work (generalised from a private project profile) |
+| `thin-orchestrator`, `orchestration-run-hygiene`, `coding-agent-delegation`, `pm-discovery` | Own work (generalised from a private project profile) |
 | `omh-*` (10 skills) | Third party, MIT: see `THIRD_PARTY.md` and `LICENSES/` |
 
 ## Install on a new device
@@ -35,10 +35,10 @@ commit as any skill edit.
 - **`omh` plugin**: required by `omh-autopilot`, `omh-ralph`, `omh-ralph-driver` (they call
   `omh_state` and `omh_gather_evidence`). Without it those skills load but cannot run.
   Install with `hermes plugins install omh` (curated catalog, community tier; review it first).
-- **Skills**: `pm-discovery` (used by `thin-orchestrator`), `claude-code` and `to-tickets`
-  (used by `coding-agent-delegation`).
+- **Skills**: `claude-code` and `to-tickets` (used by `coding-agent-delegation`); install them from the
+  Hermes skills hub.
 - **Profiles**: `developer` and `reviewer`, which `thin-orchestrator` launches with
-  `hermes -p <profile> chat`.
+  `hermes -p <profile> chat`. Persona files are in `profiles/`; credentials are not and are set per device.
 
 ## Keeping devices in sync
 

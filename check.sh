@@ -14,7 +14,7 @@ for p in "${profiles[@]}"; do
     c=$(find "$dir/skills" -type d -name "$n" -not -path "$SK/*" 2>/dev/null | head -1)
     [ -z "$c" ] || bad "$p: duplicate local copy of $n at $c (local wins over the repo)"
   done
-  for dep in pm-discovery claude-code to-tickets; do
+  for dep in claude-code to-tickets; do
     find "$dir/skills" -type d -name "$dep" 2>/dev/null | grep -q . && ok "$p: skill $dep" || bad "$p: skill $dep not installed"
   done
 done

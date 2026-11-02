@@ -6,11 +6,12 @@ commit as any skill edit.
 
 ## Layout
 
-`orchestrator/<skill>/SKILL.md`, 14 skills, plus `profiles/` (see `profiles/README.md`):
+`orchestrator/<skill>/SKILL.md`, 39 skills, plus `profiles/` (see `profiles/README.md`):
 
 | Skills | Origin |
 |---|---|
 | `thin-orchestrator`, `orchestration-run-hygiene`, `coding-agent-delegation`, `pm-discovery` | Own work (generalised from a private project profile) |
+| 25 PM working skills: `pm-feature-work`, `pm-release-readiness`, `pm-workspace-resume`, `parallel-ticket-waves`, `git-branch-integration`, debugging/triage and design skills | Own work (learned by the `pm` profile; project-specific skills kept local) |
 | `omh-*` (10 skills) | Third party, MIT: see `THIRD_PARTY.md` and `LICENSES/` |
 
 ## Install on a new device

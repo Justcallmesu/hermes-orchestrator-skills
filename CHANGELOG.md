@@ -6,6 +6,13 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.8.0 - 2026-11-02
+
+- `thin-orchestrator`: pointer to new `references/delegation-routing.md` (route choice per task, escalation
+  ladder, token discipline, per-ticket tally) for profiles using the `advanced-delegation` plugin.
+  **action**: install the plugin and configure `delegation.backends.model_map` in the profile; otherwise the
+  file is ignored.
+
 ## 0.7.1 - 2026-11-02
 
 - `orchestration-run-hygiene`: pause rules (single-ticket lift, sha256 snapshot, "stop it" mid-dispatch),

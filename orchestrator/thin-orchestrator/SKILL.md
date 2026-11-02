@@ -56,6 +56,8 @@ run-level decisions. A new session has no other way to learn them.
 - Orchestrator/planner and reviewer: the strongest model available. Developer: a mid-tier model is
   enough when the brief is precise and gates + mutation checks back it up. Project-specific choices
   belong in `PROJECT.md`.
+- When `delegate_task` takes a per-task `option` (model routes), pick the cheapest route that fits each
+  task, escalate on failure and keep briefs and reports short: see `references/delegation-routing.md`.
 - Scouting goes INTO the brief before the build; the developer still reads the real files it edits.
 
 ## Pitfalls

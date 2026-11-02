@@ -88,10 +88,39 @@ decisions under delegated authority, pauses, lost workers, and commits.
   review, then re-run the gates before commit.
 
 ## 8. Local commits (when the project grants them)
+- Before the first commit of a NEW feature, check which branch you are on and whether its own work
+  is already merged (`git log origin/main..HEAD`). If the current branch belongs to another feature,
+  ask the user (new branch from main / new branch from here / stay) before committing; a standing
+  "PM commits + pushes the feature branch" rule does not answer which branch.
 - One script per wave: check branch, empty index, no probe files (`zz-*`), each file's sha256 prefix ==
   the sha the gates ran on, staged count per commit; one commit per ticket with a why-message citing
   spec decision ids. Verify the whole tree equals the gated snapshot before committing.
 - Never stage files owned by someone else's uncommitted work.
+
+## 8b. Long PM jobs (gates, commit scripts): never trust the finish signal alone
+- A background terminal job can hang (PC sleep) or die with no exit notification; waiting on the signal
+  lost hours twice in one run. Launch every job over a few minutes through a wrapper that runs it as
+  its own user systemd unit (`systemd-run --user`, survives the agent session; needs `Linger=yes`),
+  under `systemd-inhibit --what=sleep:idle --mode=block`, with `RuntimeMaxSec` as a hard limit and an
+  EXIT trap that always writes a status file (RUNNING / DONE exit=N / KILLED exit=143).
+- Poll the status file and log age every few minutes. "RUNNING" while the unit is inactive means the
+  job died without its trap: inspect the logs, drop leftover scratch DBs, re-run.
+- Also bound each inner step with `timeout` so one hung test run fails loudly instead of eating the cap.
+- Don't auto-restart from a scheduler: a restart can race the live session and commit twice.
+
+## 8c. Merging long-diverged branches
+- Never resolve a conflict with whole-file `git checkout --ours/--theirs`: it keeps one side's entire
+  file and silently drops the other side's non-conflicting changes, so callers that merged cleanly stop
+  compiling. Resolve hunk by hunk; business conflicts (two rules for the same flow) go to the user as
+  options before resolving.
+- Do not rebase a feature branched from a release branch onto develop; it replays every release commit
+  (changelog conflicts each time). Merge the release branch into develop first, then the feature.
+- Before claiming "nothing was lost", run a drop check: for every file the other side changed since the
+  merge base, compare the result with that side and explain each difference (decision id or kept
+  feature). Plus a typecheck: missing callees surface there.
+- Merge on a scratch branch, stage without committing, gate, then fast-forward develop.
+- Deleting release artifacts (CHANGELOG, release script) on develop deletes them from main on the next
+  release merge; when main is release-only, keep them and only stop editing them on develop.
 
 ## 9. Tickets that change stored money or other precise values
 See `references/precision-sensitive-tickets.md` before cutting these tickets.

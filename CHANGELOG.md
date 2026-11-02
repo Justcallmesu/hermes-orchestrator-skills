@@ -6,6 +6,15 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.7.1 - 2026-11-02
+
+- `orchestration-run-hygiene`: pause rules (single-ticket lift, sha256 snapshot, "stop it" mid-dispatch),
+  4a machine handoff with `references/machine-handoff.md`, 5a parallel waves on one tree, commit rules
+  for APPROVE-WITH-NOTES and out-of-git failures. Merged from the `pm` profile's older local copy.
+- `.gitignore`: `orchestrator/*/references/local-*` stays unpushed; `codebase-data-flow-tracing` keeps its
+  BKM orientation there. **action**: remove the profile's own copies of `orchestration-run-hygiene`,
+  `thin-orchestrator`, `pm-discovery`, `codebase-data-flow-tracing` so the repo versions load.
+
 ## 0.7.0 - 2026-11-02
 
 - Removed 9 unused `omh-*` skills (`omh-autopilot`, `omh-deep-interview`, `omh-deep-research`, `omh-ralph`,

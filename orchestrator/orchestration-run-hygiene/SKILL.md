@@ -50,12 +50,34 @@ decisions under delegated authority, pauses, lost workers, and commits.
   failing ticket's work uncommitted, add an `<id>-fix` row, and brief the next worker to build on the
   tree (never stash / checkout / discard).
 - Answering parked questions does not lift a pause; only an explicit resume does.
+- A request naming one ticket during a pause ("review it then for X") lifts the pause for that ticket
+  only: state it in one line, log it, keep every other row paused.
+- Before stopping, write a sha256 snapshot of every uncommitted file (`runs/PAUSE-<stamp>.sha`) by
+  script, and diff the tree against it first thing on resume or handoff: uncommitted work is otherwise
+  unprotected while nobody watches.
+- "Stop it" mid-dispatch: stop the worker, confirm the tree still equals the snapshot, set its row back
+  to TODO with the brief path, and start nothing else.
+
+## 4a. Moving the run to another machine
+See `references/machine-handoff.md` (what travels by git vs archive, path rewrite, verify script).
 
 ## 5. Lost workers (owner exit, outcome unknown)
 - Do not re-dispatch blindly. Inspect the worker's scratch dir: RED-on-HEAD output, mutation outputs and
   `.bak` sha vs the current file (restored?), the last full test run. Drop any throwaway DB it left.
 - Run PM gates on the tree; ask the reviewer to also write the "what was built" section.
 - Brief every worker to write its report early and keep it updated, so a death leaves evidence.
+
+## 5a. Parallel waves on one working tree
+- PM gates read the whole tree, so commit (or park) a wave before dispatching builders that would
+  edit files the gates still cover; read-only reviewers may run alongside one builder on disjoint files.
+- When a decided rule change makes old tests fail, the fix is the fixtures (give them the data the
+  new rule needs so each test still checks what its title says), never weaker assertions; brief the
+  fix as tests-only with "STOP if an expected value must change".
+- A worker editing a file outside its list is acceptable only with a stated reason (e.g. only the
+  caller knows the ids); have the reviewer confirm the diff of that file contains nothing else.
+- Deploy SQL that a repo spec feeds through the ORM cannot carry database-client meta-commands
+  (e.g. psql `\set`, `\if`); check for such specs before adding client-only lines, and decide the fix
+  with the reviewer.
 
 ## 5b. Workers that STOP on a business conflict
 - A worker that stops because a decided rule would break a documented flow (code comments, design
@@ -66,6 +88,12 @@ decisions under delegated authority, pauses, lost workers, and commits.
   change it (require a field), unless the user decides otherwise.
 
 ## 5c. Reviewer runs that fail on their own
+- "APPROVE-WITH-NOTES" whose MAJOR sits inside the diff (a regression vs HEAD) is not committable:
+  open a fix-round row and leave the code uncommitted. Commit only when the remaining findings are
+  MINOR or outside the diff.
+- Failures caused by another ticket's out-of-git file (e.g. a deploy script a repo spec reads) do not
+  block an unrelated ticket's commit when neither the spec nor its subject is in that diff; log the
+  ruling and open the row that removes the failures.
 - A reviewer probe exiting non-zero is not a failing test until its output says so (e.g. a test runner
   reporting "No tests found" from a doubled path). Read the output before reacting; reject a review report whose
   evidence rests on such a run.

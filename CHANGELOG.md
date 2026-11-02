@@ -6,6 +6,14 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.8.1 - 2026-11-02
+
+- `thin-orchestrator/references/delegation-routing.md`: write the brief once (task `context` is a pointer of
+  at most ~600 characters, not a copy of the brief); while parked on a human decision plan only what can run
+  now; a review of a pure move/rename/comment/config diff with green gates may use `std` (all other reviews
+  stay `deep`). Tuned on 8 dry-run scenarios (route score 24/28 -> 27/28, PM tokens -19%) and checked on 4
+  unseen tickets (15/16). **action**: none. Revert the review exception by deleting its sentence.
+
 ## 0.8.0 - 2026-11-02
 
 - `thin-orchestrator`: pointer to new `references/delegation-routing.md` (route choice per task, escalation

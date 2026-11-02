@@ -11,7 +11,10 @@ backend). Route names and models come from the profile's `delegation.backends.mo
 | `std` | A normal ticket: brief names files, a pattern file, invariants and acceptance tests, and gates will check the result | Tickets whose brief you could not make precise |
 | `deep` | All code review; debugging where the cause is unknown; money or precision-sensitive changes; design or spec work; a task that already failed twice on a cheaper route | Mechanical work (it burns tokens for nothing) |
 
-Default when unsure: `std`. Reviews are always `deep` and never by the model that built the code.
+Default when unsure: `std`. Reviews are `deep` and never by the model that built the code, with one exception:
+a diff that is purely a move, rename, comment or config change (no logic line added or changed; prove it with
+`git diff --stat` and a read of the diff) whose gates are GREEN may be reviewed on `std`. Anything touching
+logic, stored values, locking, permissions or SQL stays `deep`. A human instruction in chat overrides this.
 
 ## Escalation (never retry on the same route)
 - Gates RED or report/diff mismatch on `light` -> one retry on `std`. On `std` -> one retry on `deep`.
@@ -20,6 +23,11 @@ Default when unsure: `std`. Reviews are always `deep` and never by the model tha
   escalates twice in a run, route that kind one tier up from the start.
 
 ## Token discipline
+- Write the brief ONCE, into its file (`runs/NN/build-brief.md`). The task `context` is a pointer of at most
+  ~600 characters: route, brief path, report path, "not yours" file list, the one-line stop rule. Never copy
+  the brief into `context`: that pays Opus output tokens twice for the same text.
+- While a decision is parked on the human, plan and dispatch only what can run NOW (read-only scouting, other
+  tickets). List later work as "after <decision>" without cutting briefs for it.
 - A precise brief is the biggest saving: a cheap model with a precise brief beats a strong one with a vague
   brief. Spend your own tokens on the brief, not on reading code the worker will read anyway.
 - Pass file PATHS and line ranges in `context`, never pasted file contents or logs.

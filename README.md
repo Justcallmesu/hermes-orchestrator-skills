@@ -31,15 +31,16 @@ Easiest: paste the prompt in `BOOTSTRAP.md` into Hermes and approve each step. M
    edit shows up as a git diff here.
 3. Remove same-named copies from the profile's own `skills/` folder. A local skill wins a
    name clash, so a stale copy would hide the repo version.
-4. Run `./check.sh`. It changes nothing and lists what is missing.
+4. Run `./check.sh default pm developer reviewer` (no args checks `default pm`). It changes nothing
+   and lists what is missing.
 
 ## Dependencies this repo does not contain
 
 - **`omh` plugin**: required by `omh-autopilot`, `omh-ralph`, `omh-ralph-driver` (they call
   `omh_state` and `omh_gather_evidence`). Without it those skills load but cannot run.
   Install with `hermes plugins install omh` (curated catalog, community tier; review it first).
-- **Skills**: `claude-code` and `to-tickets` (used by `coding-agent-delegation`); install them from the
-  Hermes skills hub.
+- **Skills**: `claude-code` (bundled with Hermes) and `to-tickets` (Matt Pocock's pack:
+  `hermes skills search to-tickets`), used by `coding-agent-delegation`.
 - **Profiles**: `developer` and `reviewer`, which `thin-orchestrator` launches with
   `hermes -p <profile> chat`. Persona files are in `profiles/`; credentials are not and are set per device.
 

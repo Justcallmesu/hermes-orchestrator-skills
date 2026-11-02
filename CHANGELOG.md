@@ -6,6 +6,20 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.6.0 - 2026-11-02
+
+- 25 new skills from the `pm` profile: `pm-feature-work`, `pm-release-readiness`, `pm-workspace-resume`,
+  `parallel-ticket-waves`, `git-branch-integration`, `git-commit-in-dirty-tree`, `revert-merged-change`,
+  `approval-safe-shell-runs`, `legacy-port-progress-audit`, `codebase-bug-hunt`, `codebase-data-flow-tracing`,
+  `explain-system-behavior`, `flaky-test-triage`, `service-unresponsive-triage`, `frontend-ui-layout-bugs`,
+  `api-input-validation`, `postgres-concurrency-guards`, `event-anchored-time-windows`,
+  `field-removal-across-stack`, `derived-totals-design`, `ledger-posting-design`, `deploy-data-scripts`,
+  `document-gate-placement`, `printed-document-layout-changes`, `llm-provider-integration`. Project names
+  generalised; project-specific skills stay local. **action**: on a machine that already has these in a
+  profile's own `skills/`, run `./check.sh` and remove the duplicates so the repo version loads.
+- `orchestration-run-hygiene`: branch check before a new feature's first commit, long-job supervision
+  (8b), merging long-diverged branches (8c).
+
 ## 0.5.0 - 2026-10-15
 
 - `BOOTSTRAP.md`: paste-in Hermes prompt that clones the repo, runs `check.sh`, and fixes each MISS after

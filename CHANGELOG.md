@@ -6,6 +6,13 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.7.0 - 2026-11-02
+
+- Removed 9 unused `omh-*` skills (`omh-autopilot`, `omh-deep-interview`, `omh-deep-research`, `omh-ralph`,
+  `omh-ralph-driver`, `omh-ralplan`, `omh-ralplan-driver`, `omh-triage`, `omh-triage-driver`) and the `omh`
+  plugin requirement (README, BOOTSTRAP, `check.sh`). Kept `omh-ralph-task` (in active use by `pm`).
+  **action**: nothing; the plugin was never required for the remaining skills.
+
 ## 0.6.0 - 2026-11-02
 
 - 25 new skills from the `pm` profile: `pm-feature-work`, `pm-release-readiness`, `pm-workspace-resume`,

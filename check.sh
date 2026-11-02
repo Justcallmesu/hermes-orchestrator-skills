@@ -18,8 +18,6 @@ for p in "${profiles[@]}"; do
     find "$dir/skills" -type d -name "$dep" 2>/dev/null | grep -q . && ok "$p: skill $dep" || bad "$p: skill $dep not installed"
   done
 done
-if [ -d "$HH/plugins/omh" ] || hermes plugins list 2>/dev/null | grep -qw omh; then ok "plugin omh"
-else bad "plugin omh (needed by omh-autopilot, omh-ralph, omh-ralph-driver)"; fi
 for r in developer reviewer; do [ -d "$HH/profiles/$r" ] && ok "profile $r" || bad "profile $r (thin-orchestrator launches it)"; done
 for f in $(find "$SK" -name SKILL.md); do head -1 "$f" | grep -q '^---$' || bad "bad frontmatter: $f"; done
 exit $fail

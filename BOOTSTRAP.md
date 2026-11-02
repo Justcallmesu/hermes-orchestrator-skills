@@ -18,8 +18,8 @@ Set up https://github.com/Justcallmesu/hermes-orchestrator-skills on this machin
      duplicates; tar them to ~/hermes-skill-backup-<date>.tgz first.
    - Install the missing skills `claude-code` (bundled with Hermes; run `hermes skills list`) and
      `to-tickets` (Matt Pocock's pack, `hermes skills search to-tickets`; show me the source before installing).
-4. Never: print or copy API keys, .env, auth files or memories; edit a profile I did not name; install the
-   `omh` plugin (ask me first, it is third-party code with hooks); push to any git remote.
+4. Never: print or copy API keys, .env, auth files or memories; edit a profile I did not name; push to
+   any git remote.
 5. When done, run ./check.sh again and report what still fails. Tell me to run `hermes -p developer setup`
    (or equivalent) myself for each new profile's credentials.
 ````
@@ -27,8 +27,6 @@ Set up https://github.com/Justcallmesu/hermes-orchestrator-skills on this machin
 ## What stays manual
 
 - Provider credentials, per profile and per device.
-- The `omh` plugin: `omh-autopilot`, `omh-ralph` and `omh-ralph-driver` need it. Decide on your own; check
-  the plugin first (`hermes plugins show omh`, community tier).
 - Real profile configs and memories are not in this repo.
 
 ## Not yet verified

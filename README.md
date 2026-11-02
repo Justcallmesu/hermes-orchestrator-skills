@@ -6,13 +6,13 @@ commit as any skill edit.
 
 ## Layout
 
-`orchestrator/<skill>/SKILL.md`, 39 skills, plus `profiles/` (see `profiles/README.md`):
+`orchestrator/<skill>/SKILL.md`, 30 skills, plus `profiles/` (see `profiles/README.md`):
 
 | Skills | Origin |
 |---|---|
 | `thin-orchestrator`, `orchestration-run-hygiene`, `coding-agent-delegation`, `pm-discovery` | Own work (generalised from a private project profile) |
 | 25 PM working skills: `pm-feature-work`, `pm-release-readiness`, `pm-workspace-resume`, `parallel-ticket-waves`, `git-branch-integration`, debugging/triage and design skills | Own work (learned by the `pm` profile; project-specific skills kept local) |
-| `omh-*` (10 skills) | Third party, MIT: see `THIRD_PARTY.md` and `LICENSES/` |
+| `omh-ralph-task` | Third party, MIT: see `THIRD_PARTY.md` and `LICENSES/` |
 
 ## Install on a new device
 
@@ -36,9 +36,6 @@ Easiest: paste the prompt in `BOOTSTRAP.md` into Hermes and approve each step. M
 
 ## Dependencies this repo does not contain
 
-- **`omh` plugin**: required by `omh-autopilot`, `omh-ralph`, `omh-ralph-driver` (they call
-  `omh_state` and `omh_gather_evidence`). Without it those skills load but cannot run.
-  Install with `hermes plugins install omh` (curated catalog, community tier; review it first).
 - **Skills**: `claude-code` (bundled with Hermes) and `to-tickets` (Matt Pocock's pack:
   `hermes skills search to-tickets`), used by `coding-agent-delegation`.
 - **Profiles**: `developer` and `reviewer`, which `thin-orchestrator` launches with

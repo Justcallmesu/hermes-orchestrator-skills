@@ -6,6 +6,16 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.9.0 - 2026-11-02
+
+- `pm-discovery`: cite rules (full paths, run the new `scripts/check-cites.py`), record the template search
+  (candidates, why it won, what is not copied), new 2c (list the inputs a reused primitive rejects) and 2d
+  (find the live path in the old app). From PM exams 3 and 4 (fuel receive and fuel filling): both scored
+  87.5% with 0 wrong cites; the misses were abbreviated paths, unnamed guards and an unrecorded template choice.
+- `pm-discovery/scripts/check-cites.py`: checks every `path:line` in an answer (file exists, line in range,
+  named identifiers near the line). Validated on exam 1, where it flags the cites the grader found wrong.
+  **action**: none.
+
 ## 0.8.1 - 2026-11-02
 
 - `thin-orchestrator/references/delegation-routing.md`: write the brief once (task `context` is a pointer of

@@ -1,6 +1,6 @@
 ---
 name: pm-discovery
-description: "Use before designing a feature or writing a spec. Verify first."
+description: "Use when asked how to build or port a feature. Verify first."
 ---
 
 # PM discovery: verify before you design
@@ -22,12 +22,30 @@ produced a wrong spec that would have passed review.
   numbering runs on across files and every line number after the first file is wrong.
 - Before writing the answer, re-open every `file:line` you cite and confirm the line says what you claim.
   A cite that lands on the wrong line is a false VERIFIED claim, even if the fact is true.
+- Write the FULL path in every cite. Never shorten with `...` (`app/.../x.ts:10`): an abbreviated cite
+  cannot be checked by anyone, including the script below.
+- Run `scripts/check-cites.py <answer.md> --root <prefix>=<dir> ...` (prefix = the name your cites use,
+  dir = the tree you read) and fix every FILE and RANGE error. IDENT warnings are hints: re-open that cite.
 
 ## 2b. Find the template before designing a shape
 Before proposing a new entity, status machine or flow, search the repo for an existing one with the
 same SHAPE (header + lines with a derived status, document → approval → confirm, reserve → convert,
 post-commit side effect). Name it in the design: "follows <file:line>". Inventing a parallel
 pattern when one exists is a design defect even if it works.
+- Record the search: which candidates you looked at, why this one wins, and what you do NOT copy. A
+  template can carry a flaw (an unlocked read, a missing status check); say which part you skip and why.
+
+## 2c. Reused code has guard clauses: list what it refuses
+Before a design depends on an existing method, helper or entity method, read its guards (throws,
+asserts, validators, DB constraints). For each one list the inputs the NEW flow can send that it
+rejects: zero or negative amounts, null or missing links, over a limit, a wrong status, an inactive
+parent. Each becomes an acceptance criterion or a DTO rule at the point where the user can still fix it,
+not an error that surfaces later in a different step.
+
+## 2d. Old app: find the live path first
+When comparing with the old application, establish which code path is live before describing its
+behaviour: versioned or duplicate files (`*-v2`, `*-new`, `legacy`), commented-out blocks, routes that
+nothing calls. Describe and list defects of the live path only, and name the dead one so nobody ports it.
 
 ## 3. Scope is the user's call
 These are business scope, so they go to the user as options even when one answer looks obvious:
@@ -45,7 +63,9 @@ For every rule of the form "no undo", "immutable once X", "corrected by a new do
 
 ## Before you hand in
 - [ ] Prior decisions searched and quoted (step 1)
-- [ ] Every cite re-checked against the file (step 2)
-- [ ] Existing template for the shape found and named (step 2b)
+- [ ] Every cite re-checked against the file, full paths, `check-cites.py` has no FILE/RANGE errors (step 2)
+- [ ] Existing template for the shape found, named, with why it won and what is not copied (step 2b)
+- [ ] Guard clauses of every reused primitive read; rejected inputs turned into criteria (step 2c)
+- [ ] Old-app comparison is against the live path (step 2d)
 - [ ] Scope questions asked, not decided (step 3)
 - [ ] Corrections traced to every report/total (step 4)

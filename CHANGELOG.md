@@ -6,6 +6,12 @@ same commit. Mark an entry **action** when a profile or machine must do somethin
 
 Format: version, date, one line per change.
 
+## 0.9.1 - 2026-11-02
+
+- `pm-discovery`: step 3 lists the exits of every status (cancel, reject, correction) as user questions; the
+  hand-in checklist requires a "Template search" block. `delegation-routing.md`: tickets that must trace or
+  prove behaviour before changing it route to `deep`. From the residual misses of exams 3-5 and hold-out H4.
+
 ## 0.9.0 - 2026-11-02
 
 - `pm-discovery`: cite rules (full paths, run the new `scripts/check-cites.py`), record the template search

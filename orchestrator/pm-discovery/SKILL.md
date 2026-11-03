@@ -53,6 +53,8 @@ These are business scope, so they go to the user as options even when one answer
 - Which locations, roles, item types, or modules are in or out.
 - Granularity the user will see: partial vs all-or-nothing completion, one permission vs several.
 - What happens to related records when this one is cancelled, denied or corrected.
+- The exits of every status: can a pending item be cancelled, does a cancel or reject need a reason, can a
+  decided item be corrected and how. List each exit as a question with options, even when one looks obvious.
 Give your recommendation first, with its consequence; do not decide it in "technical decisions".
 
 ## 4. Follow corrections downstream
@@ -64,8 +66,8 @@ For every rule of the form "no undo", "immutable once X", "corrected by a new do
 ## Before you hand in
 - [ ] Prior decisions searched and quoted (step 1)
 - [ ] Every cite re-checked against the file, full paths, `check-cites.py` has no FILE/RANGE errors (step 2)
-- [ ] Existing template for the shape found, named, with why it won and what is not copied (step 2b)
+- [ ] A "Template search" block in the answer: candidates, the winner and why, what is NOT copied (step 2b)
 - [ ] Guard clauses of every reused primitive read; rejected inputs turned into criteria (step 2c)
 - [ ] Old-app comparison is against the live path (step 2d)
-- [ ] Scope questions asked, not decided (step 3)
+- [ ] Scope questions asked, not decided, including every status exit (step 3)
 - [ ] Corrections traced to every report/total (step 4)

@@ -9,7 +9,7 @@ backend). Route names and models come from the profile's `delegation.backends.mo
 |---|---|---|
 | `light` | The diff is fully specified by the brief: rename, move, mechanical edit across files, fixture or test-data update, running a scripted gate and summarising the log, reading files to answer one named question | New logic, anything needing a judgement call, anything that touches stored/posted values |
 | `std` | A normal ticket: brief names files, a pattern file, invariants and acceptance tests, and gates will check the result | Tickets whose brief you could not make precise |
-| `deep` | All code review; debugging where the cause is unknown; money or precision-sensitive changes; design or spec work; a task that already failed twice on a cheaper route | Mechanical work (it burns tokens for nothing) |
+| `deep` | All code review; debugging where the cause is unknown; a ticket that must first trace or prove behaviour (every writer of a counter, every caller) before changing it; money or precision-sensitive changes; design or spec work; a task that already failed twice on a cheaper route | Mechanical work (it burns tokens for nothing) |
 
 Default when unsure: `std`. Reviews are `deep` and never by the model that built the code, with one exception:
 a diff that is purely a move, rename, comment or config change (no logic line added or changed; prove it with
